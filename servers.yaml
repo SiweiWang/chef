@@ -1,0 +1,21 @@
+---
+- name: base
+  box: centos/7
+  ram: 512
+  cpus: 1
+  ip: 192.168.1.9
+  shell_path: VagrantProvision/provision.sh
+
+# app cluster
+- name: chefserver
+  box: file://Boxes/base.box
+  ram: 1548
+  cpus: 1
+  ip: 192.168.1.10
+  shell_path: VagrantProvision/start_vm.sh
+- name: chefnode
+  box: file://Boxes/base.box
+  ram: 1548
+  cpus: 1
+  ip: 192.168.1.11
+  shell_path: VagrantProvision/start_vm.sh

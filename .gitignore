@@ -1,0 +1,6 @@
+# Vagrant stuff
+Boxes/*
+/.vagrant
+
+
+**/.DS_Store
