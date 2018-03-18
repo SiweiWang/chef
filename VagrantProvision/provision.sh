@@ -33,6 +33,8 @@ sudo chef-server-ctl install opscode-reporting && chef-server-ctl reconfigure &&
 # Chef DK install and 
 CHEF_DK_VERSION=2.5.3-1
 
-# Install Chef DK
+# download Chef DK
+sudo wget -P /tmp  https://packages.chef.io/files/stable/chefdk/2.5.3/el/7/chefdk-${CHEF_DK_VERSION}.el7.x86_64.rpm
 
-sudo wget -P /tmp https://packages.chef.io/files/stable/chefdk/2.5.3/el/7/chefdk-${CHEF_DK_VERSION}.el7.x86_64.rpm
+# install Chef DK
+sudo rpm -Uvh chefdk-2.5.3-1.el7.x86_64.rpm

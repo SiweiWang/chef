@@ -48,10 +48,85 @@ Chef DK workstation is the locaiton where user interact with Chef. User author a
 - Cookbook and policy authoring
 - Test-driven infrastructure
 
+## Install Chef in centos
 
+### install chef server and chef dk
+See the shell script [here](VagrantProvision/provision.sh)
 
+### verfiy installation
 
+#### verify chef dk ssl
+```bash
+knife ssl check
+```
+If the cert is self-signed, make sure you trust the CA by using
 
+```bash
+knife ssl fetch
+```
 
+#### verify chef server
+```bash
+chef verify
+```
 
+## Chef DK commands
 
+### Create new cookbook
+To create a cookbook, first go to the cookbooks dir under chef-repo and run 
+```bash
+chef generate cookbook lab
+```
+
+### Create new recipe
+find the new cookbook lab and add a new .rb file name apache.rb with content
+```ruby
+package "httpd" do
+    action :install
+end
+```
+
+this example will make sure chef installs apache http server.
+
+### List cookbooks
+```bash
+knife cookbook list
+```
+
+### Upload cookbooks
+```bash
+knife cookbook upload --all
+```
+
+will upload all the cookbooks
+
+### List roles
+```bash
+knife role list
+```
+
+### Update roles
+``` bash
+knife role from file <role_file>
+```
+
+### List nodes
+```bash
+knife node list
+```
+
+### Add new node using Chef DK
+knife bootstrap <chef_node_hostname> --ssh-user <ssh_username> --ssh-password <ssh_password> --node-name linux-client --sudo --verbose
+
+### Show node run list
+```bash
+knife node show linux-client
+```
+
+### add node run list 
+knife node run_list add <node_name> "<role_name>"
+
+## Chef client commad
+
+### Run cookbook
+sudo chef-client
