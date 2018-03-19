@@ -19,5 +19,6 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
 #
 # source_url 'https://github.com/<insert_org_here>/webapp-linux'
 
-depends 'yum'
-depends 'httpd' '~> 0.3.3'
+depends 'yum', '~> 5.1.0'
+depends 'httpd', '~> 0.6.2'
+depends 'firewall', '~> 2.3.0'
