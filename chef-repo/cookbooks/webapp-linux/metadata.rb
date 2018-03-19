@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'All Rights Reserved'
 description 'Installs/Configures webapp-linux'
 long_description 'Installs/Configures webapp-linux'
-version '0.1.0'
+version '0.2.3'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 
 # The `issues_url` points to the location where issues for this cookbook are
@@ -21,4 +21,9 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
 
 depends 'yum', '~> 5.1.0'
 depends 'httpd', '~> 0.6.2'
-depends 'firewall', '~> 2.3.0'
+depends 'firewall', '~> 2.6.3'
+
+depends 'mysql2_chef_gem', '~> 2.1.0'
+depends 'mysql', '~> 8.5.1'
+depends 'database', '~> 4.0.9'
+

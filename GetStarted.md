@@ -151,3 +151,48 @@ To upload to Chef server, with dependencies, run
 ```bash
 berks upload
 ```
+
+
+## Secret management -- databag
+
+### create a databag
+```bash
+knife data bag create credentials
+```
+
+### add credentials with encryption key
+```bash
+knife data bag from file credentials ./data_bags/credentials/sql_server_root_password.json --secret-file encrypted_data_bag_secret
+```
+
+### Show encrypted password
+```bash
+knife data bag show credentials sql_server_root_password
+```
+
+sample output
+```
+WARNING: Encrypted data bag detected, but no secret provided for decoding. Displaying encrypted data.
+id:       sql_server_root_password
+password:
+  auth_tag:       PD9lk/5KRH4nn+FA16Fj5w==
+
+  cipher:         aes-256-gcm
+  encrypted_data: cLwlWuYlu7z7KKvvsKNri+Grmk6hKYZtcoNyUU4=
+
+  iv:             n83LN4l9Jp/DX1hq
+
+  version:        3
+```
+
+### Show plain text password
+```bash
+knife data bag show credentials sql_server_root_password --secret-file encrypted_data_bag_secret
+```
+
+sample output
+```
+Encrypted data bag detected, decrypting with provided secret.
+id:       sql_server_root_password
+password: DevOpsPlus
+```

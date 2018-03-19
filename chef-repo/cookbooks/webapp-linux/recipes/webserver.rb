@@ -33,9 +33,9 @@ file "#{node['webapp-linux']['document_root']}/index.php" do
     action :create
 end
 
-# Open TCP port 80 for web traffic
-firewall_rule 'http' do
-    port 80
-    protocol :tcp
-    action :create
-end
+# # Open TCP port 80 for web traffic
+# firewall_rule 'http' do
+#     port 80
+#     protocol :tcp
+#     action :create
+# end
