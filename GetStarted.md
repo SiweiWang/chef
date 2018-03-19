@@ -130,3 +130,24 @@ knife node run_list add <node_name> "<role_name>"
 
 ### Run cookbook
 sudo chef-client
+
+## Berkshelf
+Berkshelf is a dependency manager for Chef cookbooks. With it, you can easily depend on community cookbooks and have them safely included in your workflow. You can also ensure that your CI systems reproducibly select the same cookbook versions, and can upload and bundle cookbook dependencies without needing a locally maintained copy. Berkshelf is included in the Chef Development Kit.
+
+Example: edit the metadata.rb in on of the cookbook that requires apt
+
+```ruby
+name 'my_first_cookbook'
+version '0.1.0'
+depends 'apt', '~> 5.0'
+```
+
+To install apt cookbook, run
+```bash
+berks install
+```
+
+To upload to Chef server, with dependencies, run
+```bash
+berks upload
+```
